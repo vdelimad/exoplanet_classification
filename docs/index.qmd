@@ -1,0 +1,122 @@
+---
+title: "Exoplanet Classification using the NASA Exoplanet Archive Dataset"
+date: 2022-11-30
+author:
+  - name: Victor De Lima
+format:
+  html:
+    toc: true
+    embed-resources: true
+    number-sections: true
+    code-fold: true
+    bibliography: references.bib
+    link-external-newwindow: true
+
+---
+
+::: {.callout-note appearance="simple"}
+All code used in this report is publicly available on [GitHub](https://github.com/vdelimad/ExoplanetClassification).
+::: 
+
+![Photo credit: [@gomez_photo_2018]](images/photo-of-solar-system.jpg)
+
+## Introduction
+
+Is it possible to detect extra-terrestrial life? That is by no means an easy question. Nevertheless, this is a fundamental question humans have pondered for thousands of years since it relates to the core of what it means to exist. When it comes to life, we have a total sample size of one observation: Earth. Hence, when looking for life forms beyond Earth, it makes sense to look at places with conditions we know can host life: Earth-like planets.
+
+NASA describes an "exoplanet" as any planet that does not orbit around our Sun. The glare created by an exoplanet's star obscures them and makes them hard to find with telescopes. Traditional methods to study exoplanets included analyzing the object's effects on its star's orbit. A star with planets does not perform a perfect orbit around a central point but is instead "wobbly. " Even though scientists have discovered hundreds of planets using this method, it only worked for giant planets [@nasa_space_place_what_2022]. 
+
+In 2009, NASA launched the Kepler mission: the first mission dedicated to searching for habitable zone (i.e., at a distance from their star where life might be possible) planets with a size similar to Earth or smaller and within the vicinity of our solar system. The Kepler spacecraft collected data from the light received from distant stars. When a planet passes in front of its star, it causes a change in the amount of light received (called a "transit "). Taking measurements of recurring transit allows scientists to infer a wide array of information about exoplanets. The Kepler Mission ran for over nine years until 2018, when it ran out of fuel, and achieved more than 2,600 exoplanet discoveries [@nasa_kepler_2022].
+
+The relevance of this problem cannot be understated: discovering life on other planets. It is essential to study Earth-like planets because we know life is possible on Earth; hence, our best bet is to go hunting for planets with Earth-like conditions. Finding exoplanets is the first step in this search, and subsequent steps include making sure they are Earth-like and analyzing the composition of the atmosphere.
+
+## The Dataset
+
+The dataset is a collection of features describing the light received from Kepler Objects of Interest (KOI) by the Kepler Spacecraft. It is important to note that a KOI is not a planet but a star observed by Kepler (i.e., we are trying to detect a planet by looking at its stars’ light). The star’s light dims when a planet passes between Earth and the star. Of course, dimming only shows some object passed between Earth and the star, but it does not prove it was a planet.
+
+The Kepler Spacecraft collected light data continuously, leading to a significant amount of false positives that researchers detected by submitting them to tests described in @batalha_planetary_2013. The dataset contains observations that have already been through this process and are labeled as either “False Positive” if it failed any Batalha test or “Candidate” if it managed to remain a contender (a classification referred to as the KOI’s “Disposition”). By training a model that can predict whether the observation is a False Positive or a Candidate, we save researchers a significant amount of time and get potential exoplanets ready to go on to the next phase of verification.
+
+NASA, the Caltech Infrared Processing & Analysis Center (IPAC), and the Caltech-operated NASA Exoplanet Science Institute (NExScI) provide the data. The specific version this study will use is the Cumulative Kepler Objects-of-Interest (KOI) data table, which is publicly available for download at the NASA Exoplanet Science Institute’s website, and was last updated on Sept. 27, 2018 [@nasa_exoplanet_science_institute_q1q17_2018].
+
+These features include:
+stellar parameters (such as positions, magnitudes, and temperatures), 
+exoplanet parameters (such as masses and orbital parameters), and 
+discovery/characterization data (such as published radial velocity curves, photometric light curves, images, and spectra) [@nasa_exoplanet_science_institute_about_2021].
+
+A full description of the columns is available at NExScI’s website [@nasa_exoplanet_science_institute_data_2021]. The raw dataset has 49 columns and 9,564 rows.
+
+## Methodology
+
+Since we have a supervised classification problem at hand, there are a few options we can consider. First, the Naïve Bayes classifier is a supervised classification algorithm based on Bayes' Theorem, which assumes conditional independence between pairs of features. Practitioners use this algorithm primarily for text classification, including spam filtering. Second, Logistic Regression, also known as maximum entropy classification, models the probabilities of the outcomes of a single trial using a logistic function. The model's primary functionality is binary classification problems. Third, Random Forests are a flexible algorithm for classification that references a collection of the decision trees that make group decisions to improve prediction accuracy and reduce variance. Lastly, Support Vector Machines (SVMs) seek to construct an N-1 hyperplane to separate data into two classes. SVMs are effective in high dimensional spaces, memory efficient, and versatile. SVM's challenges are selecting the proper Kernel function and regularization term [@scikit-learn_support_2022]. Hence, although logistic regression is a good candidate for this problem, the robustness of SVMs makes the algorithm a clear winner for this problem.
+
+Support vector machine seeks to set a hyperplane that separates the data by having the largest distance to the nearest training points of any class (called the “margin”). We are looking to optimize the width of this margin. We cannot get a perfect separation between all data points; inevitably, some points must fall within the margin. However, we introduce a penalty function that penalizes the output for the points in the margin. SVMs use duality, meaning that there is a pair of local and global problems that allow us to use local information about the problem to make inferences about the global information. Duality also means we are in the domain of convex optimization. Lastly, although SVMs are inherently linear classifiers, we can modify them to use “Kernel” functions, allowing us to transform the data as if we had added an extra dimension in which the data is linearly separable and make use of that separation. This method is known as the “Kernel Trick” (class material).
+
+For this implementation, we will be using scikit-learn’s SVC class from its SVM library. Let’s begin by introducing the following equations:
+
+$$ 
+\begin{align}\begin{aligned}\min_ {w, b, \zeta} \frac{1}{2} w^T w + C \sum_{i=1}^{n} \zeta_i\\\begin{split}\textrm {subject to } & y_i (w^T \phi (x_i) + b) \geq 1 - \zeta_i,\\
+& \zeta_i \geq 0, i=1, ..., n\end{split}\end{aligned}\end{align} 
+$$
+
+$$
+\begin{align}\begin{aligned}\min_{\alpha} \frac{1}{2} \alpha^T Q \alpha - e^T \alpha\\\begin{split}
+\textrm {subject to } & y^T \alpha = 0\\
+& 0 \leq \alpha_i \leq C, i=1, ..., n\end{split}\end{aligned}\end{align}
+$$
+
+$$
+\begin{align}
+\sum_{i\in SV} y_i \alpha_i K(x_i, x) + b 
+\end{align}
+$$
+
+
+The SVC implementation solves the primal problem in equation 1. The goal is to find $w \in \mathbb{R}^P$ and $b \in \mathbb{R}$ such that the prediction given by $\text{sign} (w^T\phi(x) + b)$ is mostly correct. In other words, it attempts to maximize the hyperplane’s margin, while incurring a penalty when a sample is misclassified or within the boundary. The penalty term $C$ controls the strength the penalty, acting as an inverse regularization parameter. Meanwhile, the dual problem is given by equation 2.
+
+In this program, $e$ is the vector of all ones, $Q$ is an $n \times n$ positive semidefinite matrix such that $Q_{ij} \equiv y_i y_j K(x_i, x_j)$ where $K(x_i, x_j) = \phi (x_i)^T \phi (x_j)$ is the kernel, and $\alpha_i$ are called the dual coefficients. Lastly, the output for a sample $x$ is equation 3. The predicted class corresponds to the sign of the output [@scikit-learn_support_2022].
+
+## Data Preprocessing
+The data needs some preprocessing to go into the model. By doing preliminary exploratory data analysis, we can see two empty columns and nine categorical columns. We drop these and are left with 38 columns. We also drop all the rows containing any empty values, which leaves 7,803 observations. Finally, we convert the “Disposition Using Kepler Data” columns into categorical variables using Pandas’ “cat.codes” function. It is worth noting that since only 38 features remain, no dimensionality reduction will be performed.
+
+To set up the data for modeling, we also split the data into y (Disposition Using Kepler Data) and X (features) sets. We also normalize the X frame using sklearn’s StandardScaler. Lastly, we perform a 20-80 split of the data into training and testing sets. 
+
+## Results
+To train the model, we tested four Kernel functions available in the sklearn package: Linear, Polynomial, RBF, and Sigmoid. In each, we tested five regularization parameters for the penalty function (0.35, 0.45, 0.55, 0.65, 0.75). 
+
+Although all four Kernel functions perform well, the linear Kernel is the best performer, at any parameter C. Hence, by running the model with a linear kernel (convex optimization problem) and a 0.5 C Parameter, we obtain the following output showing a 95% accuracy on both training and testing sets:
+
+|                   | precision | recall    | f1-score  | support   |
+|---------          |:-----:    |:------:   |:------:   | :------:  |
+| Candidate         | 0.972629  | 0.943501  | 0.957844  | 3239      |
+| False Positive    | 0.940968  | 0.971362  | 0.955923  | 3003      |
+| accuracy          | 0.956905  | 0.956905  | 0.956905  | 0.956905  |
+| macro avg         | 0.956798  | 0.957432  | 0.956883  | 6242      |
+| weighted avg      | 0.957397  | 0.956905  | 0.95692   |  6242     |
+
+: Training Set
+
+
+|                   | precision | recall    | f1-score  | support   |
+|---------          |:-----:    |:------:   |:------:   | :------:  |
+| Candidate         | 0.964912  | 0.935601  | 0.950031  | 823       |
+| False Positive    | 0.930537  | 0.96206   | 0.946036  | 738       |
+| accuracy          | 0.94811   | 0.94811   | 0.94811   | 0.94811   |
+| macro avg         | 0.947725  | 0.948831  | 0.948033  | 1561      |
+| weighted avg      | 0.948661  | 0.94811   | 0.948142  | 1561      |
+
+: Testing Set
+
+
+In order to validate the results, we perform a 10-fold cross-validation using sklearn's "cross_val_score" helper function. This function runs the SVM with the selected parameters (linear kernel and C=0.5) on ten different partitions of the dataset. The mean of the ten iterations is an accuracy of 0.95, a standard deviation of 0.02, hence supporting the chosen parameters.
+
+The next chart shows the resulting Accuracy and Precision scores obtained via the sklearn implementation:
+
+![Accuracy and Precision Scores Per Kernel](images/accuracy_and_precision_scores.jpg)
+
+## Conclusion
+
+In conclusion, SVMs prove effective for distinguishing between False Positive and Candidate exoplanets. This analysis began by formulating the question of whether an exoplanet star's light data can be used to detect False Positives, improving having to test each observation individually. Then, we discussed how the Kepler mission collected and created the labeled data set. An overview of several supervised classification algorithms followed and settled on super vector machines. Then, we discussed the functioning of SVMs and their specific implementation within the sklearn library for Python. Next, we addressed data processing and ran several SVMs with four Kernel functions and five regularization parameters. A Linear Kernel with a 0.5 C Parameter was deemed optimal, achieving a 95% accuracy in detecting both False Positives and Candidates in the data set. Lastly, we perform 10-fold cross-validation on the model using the chosen parameters, which further supported the results.
+
+
+
+## References {.unnumbered}
