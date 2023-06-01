@@ -95,26 +95,27 @@ To train the model, we tested four Kernel functions available in the sklearn pac
 
 Although all four Kernel functions perform well, the linear Kernel is the best performer, at any parameter C. Hence, by running the model with a linear kernel (convex optimization problem) and a 0.5 C Parameter, we obtain the following output showing a 95% accuracy on both training and testing sets:
 
-|                   | precision | recall    | f1-score  |
-|---------          |:-----:    |:------:   |:------:   |
-| Candidate         | 0.972  | 0.943  | 0.957  |
-| False Positive    | 0.940  | 0.971  | 0.955  |
-| accuracy          | 0.956  | 0.956  | 0.956  |
-| macro avg         | 0.956  | 0.957  | 0.956  |
-| weighted avg      | 0.957  | 0.956  | 0.956  |
+|                   | precision | recall    | f1-score  | support   |
+|---------          |:-----:    |:------:   |:------:   | :------:  |
+| Candidate         | 0.972629  | 0.943501  | 0.957844  | 3239      |
+| False Positive    | 0.940968  | 0.971362  | 0.955923  | 3003      |
+| accuracy          | 0.956905  | 0.956905  | 0.956905  | 0.956905  |
+| macro avg         | 0.956798  | 0.957432  | 0.956883  | 6242      |
+| weighted avg      | 0.957397  | 0.956905  | 0.95692   |  6242     |
 
 : Training Set
 
 
-|                   | precision | recall    | f1-score  |
-|---------          |:-----:    |:------:   |:------:   |
-| Candidate         | 0.964  | 0.935  | 0.950  |
-| False Positive    | 0.930  | 0.962  | 0.946  |
-| accuracy          | 0.948  | 0.948  | 0.948  |
-| macro avg         | 0.947  | 0.948  | 0.948  |
-| weighted avg      | 0.948  | 0.948  | 0.948  |
+|                   | precision | recall    | f1-score  | support   |
+|---------          |:-----:    |:------:   |:------:   | :------:  |
+| Candidate         | 0.964912  | 0.935601  | 0.950031  | 823       |
+| False Positive    | 0.930537  | 0.96206   | 0.946036  | 738       |
+| accuracy          | 0.94811   | 0.94811   | 0.94811   | 0.94811   |
+| macro avg         | 0.947725  | 0.948831  | 0.948033  | 1561      |
+| weighted avg      | 0.948661  | 0.94811   | 0.948142  | 1561      |
 
 : Testing Set
+
 
 
 In order to validate the results, we perform a 10-fold cross-validation using sklearn's "cross_val_score" helper function. This function runs the SVM with the selected parameters (linear kernel and C=0.5) on ten different partitions of the dataset. The mean of the ten iterations is an accuracy of 0.95, a standard deviation of 0.02, hence supporting the chosen parameters.

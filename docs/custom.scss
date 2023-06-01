@@ -21,3 +21,17 @@ div#quarto-appendix.default {
 h1.title, p.subtitle {
   color: white;
 }
+
+
+/* Default table styles */
+table {
+  width: 100%;
+}
+
+/* Styles for mobile devices */
+@media (max-width: 767px) {
+  table {
+    width: 100%;
+    font-size: 0.6rem;
+  }
+}
