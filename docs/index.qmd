@@ -95,24 +95,24 @@ To train the model, we tested four Kernel functions available in the sklearn pac
 
 Although all four Kernel functions perform well, the linear Kernel is the best performer, at any parameter C. Hence, by running the model with a linear kernel (convex optimization problem) and a 0.5 C Parameter, we obtain the following output showing a 95% accuracy on both training and testing sets:
 
-|                   | precision | recall    | f1-score  | support   |
-|---------          |:-----:    |:------:   |:------:   | :------:  |
-| Candidate         | 0.972  | 0.943  | 0.957  | 3239      |
-| False Positive    | 0.940  | 0.971  | 0.955  | 3003      |
-| accuracy          | 0.956  | 0.956  | 0.956  | 0.956  |
-| macro avg         | 0.956  | 0.957  | 0.956  | 6242      |
-| weighted avg      | 0.957  | 0.956  | 0.956  |  6242     |
+|                   | precision | recall    | f1-score  |
+|---------          |:-----:    |:------:   |:------:   |
+| Candidate         | 0.972  | 0.943  | 0.957  |
+| False Positive    | 0.940  | 0.971  | 0.955  |
+| accuracy          | 0.956  | 0.956  | 0.956  |
+| macro avg         | 0.956  | 0.957  | 0.956  |
+| weighted avg      | 0.957  | 0.956  | 0.956  |
 
 : Training Set
 
 
-|                   | precision | recall    | f1-score  | support   |
-|---------          |:-----:    |:------:   |:------:   | :------:  |
-| Candidate         | 0.964  | 0.935  | 0.950  | 823       |
-| False Positive    | 0.930  | 0.962  | 0.946  | 738       |
-| accuracy          | 0.948  | 0.948  | 0.948  | 0.948   |
-| macro avg         | 0.947  | 0.948  | 0.948  | 1561      |
-| weighted avg      | 0.948  | 0.948  | 0.948  | 1561      |
+|                   | precision | recall    | f1-score  |
+|---------          |:-----:    |:------:   |:------:   |
+| Candidate         | 0.964  | 0.935  | 0.950  |
+| False Positive    | 0.930  | 0.962  | 0.946  |
+| accuracy          | 0.948  | 0.948  | 0.948  |
+| macro avg         | 0.947  | 0.948  | 0.948  |
+| weighted avg      | 0.948  | 0.948  | 0.948  |
 
 : Testing Set
 
