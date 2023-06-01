@@ -3,19 +3,29 @@ title: "Exoplanet Classification using the NASA Exoplanet Archive Dataset"
 date: 2022-11-30
 author:
   - name: Victor De Lima
+    affiliations:
+      - name: Georgetown University
 format:
   html:
+    theme:
+      - lumen
+      - custom.scss
     toc: true
+    code-copy: true
     embed-resources: true
     number-sections: true
+    code-line-numbers: true
     code-fold: true
-    bibliography: references.bib
-    link-external-newwindow: true
-
+    highlight-style: github
+bibliography: references.bib
+csl: council-of-science-editors-brackets.csl
+title-block-banner: '#0F172A'
 ---
 
 ::: {.callout-note appearance="simple"}
-All code used in this report is publicly available on [GitHub](https://github.com/vdelimad/ExoplanetClassification).
+* All code used in this report is publicly available on [GitHub](https://github.com/vdelimad/tsb-with-reinforcement-learning).
+* To explore more of my work, please visit my [website](https://victordelima.com/).
+
 ::: 
 
 ![Photo credit: [@gomez_photo_2018]](images/photo-of-solar-system.jpg)
