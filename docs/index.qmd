@@ -5,11 +5,15 @@ author:
   - name: Victor De Lima
     affiliations:
       - name: Georgetown University
+abstract: "Is it possible to detect extra-terrestrial life? That is by no means an easy question. Nevertheless, this is a fundamental question humans have pondered for thousands of years since it relates to the core of what it means to exist. When it comes to life, we have a total sample size of one observation: Earth. Hence, when looking for life forms beyond Earth, it makes sense to look at places with conditions we know can host life: Earth-like planets."
+abstract-title: ""
+image: images/photo-of-solar-system.jpg
+categories: [portfolio-projects]
 format:
   html:
-    theme:
-      - lumen
-      - custom.scss
+    #theme:
+    #  - lumen
+    #  - custom.scss
     toc: true
     code-copy: true
     embed-resources: true
@@ -19,20 +23,18 @@ format:
     highlight-style: github
 bibliography: references.bib
 csl: council-of-science-editors-brackets.csl
-title-block-banner: '#0F172A'
+#title-block-banner: '#0F172A'
 ---
 
 ::: {.callout-note appearance="simple"}
-* All code used in this report is publicly available on [GitHub](https://github.com/vdelimad/tsb-with-reinforcement-learning).
-* To explore more of my work, please visit my [website](https://victordelima.com/).
+All code used in this report is publicly available on [GitHub](https://github.com/vdelimad/tsb-with-reinforcement-learning).
 
 ::: 
 
-![Photo credit: [@gomez_photo_2018]](images/photo-of-solar-system.jpg)
+
+![Photo credit: [@gomez_photo_2018]](images/photo-of-solar-system.jpg){#fig-solar-system}
 
 ## Introduction
-
-Is it possible to detect extra-terrestrial life? That is by no means an easy question. Nevertheless, this is a fundamental question humans have pondered for thousands of years since it relates to the core of what it means to exist. When it comes to life, we have a total sample size of one observation: Earth. Hence, when looking for life forms beyond Earth, it makes sense to look at places with conditions we know can host life: Earth-like planets.
 
 NASA describes an "exoplanet" as any planet that does not orbit around our Sun. The glare created by an exoplanet's star obscures them and makes them hard to find with telescopes. Traditional methods to study exoplanets included analyzing the object's effects on its star's orbit. A star with planets does not perform a perfect orbit around a central point but is instead "wobbly. " Even though scientists have discovered hundreds of planets using this method, it only worked for giant planets [@nasa_space_place_what_2022]. 
 
