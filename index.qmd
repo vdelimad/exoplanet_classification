@@ -7,7 +7,7 @@ author:
       - name: Georgetown University
 abstract: "Is it possible to detect extra-terrestrial life? That is by no means an easy question. Nevertheless, this is a fundamental question humans have pondered for thousands of years since it relates to the core of what it means to exist. When it comes to life, we have a total sample size of one observation: Earth. Hence, when looking for life forms beyond Earth, it makes sense to look at places with conditions we know can host life: Earth-like planets."
 abstract-title: ""
-image: images/photo-of-solar-system.jpg
+image: assets/images/photo-of-solar-system.jpg
 categories: [portfolio-projects]
 format:
   html:
@@ -21,8 +21,8 @@ format:
     code-line-numbers: true
     code-fold: true
     highlight-style: github
-bibliography: references.bib
-csl: council-of-science-editors-brackets.csl
+bibliography: assets/references.bib
+csl: assets/council-of-science-editors-brackets.csl
 #title-block-banner: '#0F172A'
 ---
 
@@ -32,7 +32,7 @@ All code used in this report is publicly available on [GitHub](https://github.co
 ::: 
 
 
-![Photo credit: [@gomez_photo_2018]](images/photo-of-solar-system.jpg){#fig-solar-system}
+![Photo credit: [@gomez_photo_2018]](assets/images/photo-of-solar-system.jpg){#fig-solar-system}
 
 ## Introduction
 
@@ -124,7 +124,7 @@ In order to validate the results, we perform a 10-fold cross-validation using sk
 
 The next chart shows the resulting Accuracy and Precision scores obtained via the sklearn implementation:
 
-![Accuracy and Precision Scores Per Kernel](images/accuracy_and_precision_scores.jpg)
+![Accuracy and Precision Scores Per Kernel](assets/images/accuracy_and_precision_scores.jpg)
 
 ## Conclusion
 
