@@ -8,7 +8,8 @@ author:
 abstract: "Is it possible to detect extra-terrestrial life? That is by no means an easy question. Nevertheless, this is a fundamental question humans have pondered for thousands of years since it relates to the core of what it means to exist. When it comes to life, we have a total sample size of one observation: Earth. Hence, when looking for life forms beyond Earth, it makes sense to look at places with conditions we know can host life: Earth-like planets."
 abstract-title: ""
 image: assets/images/photo-of-solar-system.jpg
-categories: [portfolio-projects]
+categories: [support vector machines]
+content-type: portfolio-projects
 format:
   html:
     #theme:
