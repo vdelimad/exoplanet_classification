@@ -9,7 +9,7 @@ abstract: "Is it possible to detect extra-terrestrial life? That is by no means 
 abstract-title: ""
 image: assets/images/photo-of-solar-system.jpg
 categories: [support vector machines]
-content-type: portfolio-projects
+content-type: projects
 format:
   html:
     #theme:
