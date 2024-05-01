@@ -28,7 +28,7 @@ csl: assets/council-of-science-editors-brackets.csl
 ---
 
 ::: {.callout-note appearance="simple"}
-All code used in this report is publicly available on [GitHub](https://github.com/vdelimad/tsb-with-reinforcement-learning).
+All code used in this report is publicly available on [GitHub](https://github.com/vdelimad/exoplanet-classification).
 
 ::: 
 
