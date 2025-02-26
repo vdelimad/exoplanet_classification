@@ -5,11 +5,6 @@ author:
   - name: Victor De Lima
     affiliations:
       - name: Georgetown University
-abstract: "Is it possible to detect extra-terrestrial life? That is by no means an easy question. Nevertheless, this is a fundamental question humans have pondered for thousands of years since it relates to the core of what it means to exist. When it comes to life, we have a total sample size of one observation: Earth. Hence, when looking for life forms beyond Earth, it makes sense to look at places with conditions we know can host life: Earth-like planets."
-abstract-title: ""
-image: assets/images/photo-of-solar-system.jpg
-categories: [support vector machines]
-content-type: projects
 format:
   html:
     #theme:
@@ -27,10 +22,16 @@ csl: assets/council-of-science-editors-brackets.csl
 #title-block-banner: '#0F172A'
 ---
 
+- Visit my [website](https://www.victordelima.com/).
+
 ::: {.callout-note appearance="simple"}
 All code used in this report is publicly available on [GitHub](https://github.com/vdelimad/exoplanet-classification).
 
 ::: 
+
+### Abstract {.unnumbered}
+
+Is it possible to detect extra-terrestrial life? That is by no means an easy question. Nevertheless, this is a fundamental question humans have pondered for thousands of years since it relates to the core of what it means to exist. When it comes to life, we have a total sample size of one observation: Earth. Hence, when looking for life forms beyond Earth, it makes sense to look at places with conditions we know can host life: Earth-like planets.
 
 
 ![Photo credit: [@gomez_photo_2018]](assets/images/photo-of-solar-system.jpg){#fig-solar-system}
