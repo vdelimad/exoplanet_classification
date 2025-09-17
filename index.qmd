@@ -5,11 +5,16 @@ author:
   - name: Victor De Lima
     affiliations:
       - name: Georgetown University
+project-url: 
+  - "https://purl.org/victordelima/exoplanet_classification"
 format:
   html:
     #theme:
     #  - lumen
     #  - custom.scss
+    css: assets/custom.css
+    template-partials:
+      - assets/title-block.html
     toc: true
     code-copy: true
     embed-resources: true

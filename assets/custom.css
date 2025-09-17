@@ -1,0 +1,7 @@
+#title-block-header .project-url a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+}
+
+
